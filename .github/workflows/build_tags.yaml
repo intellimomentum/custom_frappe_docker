@@ -1,15 +1,33 @@
 name: Build tagged images
 
 on:
-  workflow-dispatch:
-    branches:
-      # - main
-      - Customize
-      - Production
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug 
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true 
+        type: boolean 
+      tags:
+        description: 'Test scenario tags'
+        required: true 
+        type: string
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true 
   push:
     branches:
       # - main
-      - Customize
+      # - Customize
       - Production
     paths:
       - version.txt
