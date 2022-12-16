@@ -27,7 +27,7 @@ on:
   push:
     branches:
       # - main
-      # - Customize
+      - Customize
       - Production
     paths:
       - version.txt
