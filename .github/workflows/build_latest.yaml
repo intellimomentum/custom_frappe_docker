@@ -6,7 +6,7 @@ on:
       # - main
       - Customize
       - Production
-      
+
 
 jobs:
   build:
@@ -39,12 +39,12 @@ jobs:
       - name: Get Base Versions
         id: get-base-versions
         run: |
-          echo "::set-output name=FRAPPE_VERSION::$(jq -r .frappe base_versions.json)"
-          echo "::set-output name=ERPNEXT_VERSION::$(jq -r .erpnext base_versions.json)"
+          echo "FRAPPE_VERSION=$(jq -r .frappe base_versions.json)" >> $GITHUB_STATE
+          echo "ERPNEXT_VERSION=$(jq -r .erpnext base_versions.json)" >> $GITHUB_STATE
 
       - name: Get Repo
         id: get-repo
-        run: echo "::set-output name=REPOSITORY::${GITHUB_REPOSITORY#*/}"
+        run: echo "REPOSITORY=${GITHUB_REPOSITORY#*/}" >> $GITHUB_STATE
 
       - name: Push
         uses: docker/bake-action@v2.3.0
