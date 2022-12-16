@@ -2,10 +2,14 @@ name: Build tagged images
 
 on:
   workflow-dispatch:
+    branches:
+      # - main
+      - Customize
+      - Production
   push:
     branches:
       # - main
-      # - Customize
+      - Customize
       - Production
     paths:
       - version.txt
