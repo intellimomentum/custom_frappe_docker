@@ -1,10 +1,11 @@
 name: Build latest images
 
-on:
+on: 
+  workflow-dispatch:
   push:
     branches:
       # - main
-      - Customize
+      # - Customize
       - Production
 
 
