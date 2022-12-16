@@ -18,5 +18,7 @@
 
 # Following are public repositories.
 
-git clone --depth 1 --branch main https://github.com/castlecraft/cfe repos/castlecraft
-git clone --depth 1 --branch main https://github.com/castlecraft/microsoft_integration repos/microsoft_integration
+git clone --depth 1 --branch version-14 https://github.com/bernhein/erpnext.git repos/erpnext
+git clone --depth 1 --branch v1.0.0 https://github.com/bernhein/hrms.git repos/hrms
+git clone --depth 1 --branch version-14 https://github.com/bernhein/erpnext_germany.git repos/erpnext_germany
+git clone --depth 1 --branch version-14 https://github.com/bernhein/erpnext_datev.git repos/erpnext_datev

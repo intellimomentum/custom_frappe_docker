@@ -10,7 +10,9 @@ services:
 build_latest:
   stage: build
   only:
-    - main
+    #- main
+    - Customize
+    - Production
   before_script:
     # Install os dependencies
     - apk --update add openssh-client git jq curl
@@ -39,7 +41,9 @@ build_version:
   stage: build
   only:
     refs:
-      - main
+      #- main
+      - Customize
+      - Production
     changes:
       - version.txt
   before_script:
