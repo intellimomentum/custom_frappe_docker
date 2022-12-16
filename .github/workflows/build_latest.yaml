@@ -62,12 +62,11 @@ jobs:
       - name: Get Base Versions
         id: get-base-versions
         run: |
-          echo "FRAPPE_VERSION=$(jq -r .frappe base_versions.json)" >> $GITHUB_STATE
-          echo "ERPNEXT_VERSION=$(jq -r .erpnext base_versions.json)" >> $GITHUB_STATE
-
+          echo "::set-output name=FRAPPE_VERSION::$(jq -r .frappe base_versions.json)"
+          echo "::set-output name=ERPNEXT_VERSION::$(jq -r .erpnext base_versions.json)"
       - name: Get Repo
         id: get-repo
-        run: echo "REPOSITORY=${GITHUB_REPOSITORY#*/}" >> $GITHUB_STATE
+        run: echo "::set-output name=REPOSITORY::${GITHUB_REPOSITORY#*/}"
 
       - name: Push
         uses: docker/bake-action@v2.3.0
@@ -78,7 +77,7 @@ jobs:
         env:
           FRAPPE_VERSION: ${{ steps.get-base-versions.outputs.FRAPPE_VERSION }}
           ERPNEXT_VERSION: ${{ steps.get-base-versions.outputs.ERPNEXT_VERSION }}
-          REGISTRY_NAME: ghcr.io/${{ github.repository_owner }}/custom_frappe_docker
+          REGISTRY_NAME: ghcr.io/${{ github.repository_owner }}
           VERSION: latest
           BACKEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/worker
           FRONTEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/nginx
