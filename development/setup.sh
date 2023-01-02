@@ -21,12 +21,18 @@ bench set-config -g redis_queue redis://redis-queue:6379
 echo "Set redis_socketio to redis://redis-socketio:6379"
 bench set-config -g redis_socketio redis://redis-socketio:6379
 
-# Create custom.localhost site
-echo "Create custom.localhost, install apps castlecraft, microsoft_integration"
+# Create erpnext.localhost site
+echo "Create erpnext.localhost, install apps"
 bench new-site \
   --no-mariadb-socket \
   --db-root-password=123 \
   --admin-password=admin \
-  --install-app=castlecraft \
-  --install-app=microsoft_integration \
-  custom.localhost
+  --install-app=erpnext  \
+  --install-app=hrms \
+  --install-app=erpnext_germany \
+  --install-app=erpnext_datev \
+  --install-app=erpnext_customization \
+  --install-app=erpnextfints \
+  erpnext.localhost
+
+bench --site erpnext.localhost enable-scheduler
