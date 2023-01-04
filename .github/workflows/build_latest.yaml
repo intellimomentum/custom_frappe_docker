@@ -68,7 +68,7 @@ jobs:
         id: get-repo
         run: |
           echo "::set-output name=REPOSITORY::${GITHUB_REPOSITORY#*/}"
-          echo "::set-output name=used_branch::${{github.head_ref || github.ref_name}}"
+          echo "::set-output name=used_branch::${github.head_ref || github.ref_name}"
       - name: Push
         uses: docker/bake-action@v2.3.0
         with:
