@@ -9,3 +9,4 @@ development/*
 !development/fetch_admin_keys.py
 !development/setup.sh
 !development/vscode-example/
+cheatsheet.txt

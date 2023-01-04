@@ -1,6 +1,6 @@
 {
   "name": "Custom Frappe Bench",
-  "remoteUser": "frappe",
+  "remoteUser": "intellimomentum",
   "settings": {
     "debug.node.autoAttach": "disabled"
   },

@@ -1,10 +1,26 @@
 [
   {
-    "url": "https://github.com/castlecraft/cfe",
+    "url": "https://github.com/intellimomentum/erpnext.git",
+    "branch": "Customize"
+  },
+  {
+    "url": "https://github.com/intellimomentum/hrms.git",
+    "branch": "v1.0.0"
+  },
+  {
+    "url": "https://github.com/intellimomentum/erpnext_datev.git",
+    "branch": "version-14"
+  },
+  {
+    "url": "https://github.com/intellimomentum/erpnext_germany.git",
+    "branch": "version-14"
+  },
+  {
+    "url": "https://github.com/intellimomentum/erpnext_customization.git",
     "branch": "main"
   },
   {
-    "url": "https://github.com/castlecraft/microsoft_integration",
-    "branch": "main"
+    "url": "https://github.com/intellimomentum/erpnextfints.git",
+    "branch": "master"
   }
 ]
