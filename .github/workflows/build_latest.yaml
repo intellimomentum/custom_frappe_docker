@@ -81,5 +81,5 @@ jobs:
           VERSION: latest
           run: |
             bra=$(echo 'console.log("${{ github.head_ref || github.ref_name }}".toLowerCase())' | node -)
-          BACKEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/worker-${bra}
-          FRONTEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/nginx-${bra}
+          BACKEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/worker-${[bra}}
+          FRONTEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/nginx-${{bra}}
