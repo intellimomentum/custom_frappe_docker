@@ -72,7 +72,6 @@ jobs:
 
       - name: downcase BRANCH
         run: |
-          echo "USEDBRANCH=${github.head_ref,,}" >>${USEDBRANCH}
           echo 'print("${{github.head_ref || github.ref_name}}".upper())' | python3.9 -) >>${USEDBRANCH}
 
       - name: Push
