@@ -66,20 +66,25 @@ jobs:
           echo "::set-output name=ERPNEXT_VERSION::$(jq -r .erpnext base_versions.json)"
       - name: Get Repo
         id: get-repo
-        run: echo "::set-output name=REPOSITORY::${GITHUB_REPOSITORY#*/}"
+        run: |
+          echo "::set-output name=REPOSITORY::${GITHUB_REPOSITORY#*/}"
+          echo "::set-output name=used_branch::${{github.head_ref || github.ref_name}}"
 
+      - name: downcase REPO
+        run: |
+          echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
       - name: Push
         uses: docker/bake-action@v2.3.0
         with:
           push: true
           no-cache: true
           # set: "*.platform=linux/amd64,linux/arm64"
-        env:
+        run: |
+            bra=$(echo 'console.log("${{ github.head_ref || github.ref_name }}".toLowerCase())' | node -)
+        env: use bra
           FRAPPE_VERSION: ${{ steps.get-base-versions.outputs.FRAPPE_VERSION }}
           ERPNEXT_VERSION: ${{ steps.get-base-versions.outputs.ERPNEXT_VERSION }}
           REGISTRY_NAME: ghcr.io/${{ github.repository_owner }}/custom_frappe_docker
           VERSION: latest
-          run: |
-            bra=$(echo 'console.log("${{ github.head_ref || github.ref_name }}".toLowerCase())' | node -)
-          BACKEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/worker-${[bra}}
+          BACKEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/worker-${{bra}}
           FRONTEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/nginx-${{bra}}
