@@ -10,3 +10,4 @@ development/*
 !development/setup.sh
 !development/vscode-example/
 cheatsheet.txt
+.DS_Store
