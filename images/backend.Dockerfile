@@ -11,6 +11,6 @@ RUN install-app hrms
 RUN install-app erpnext_datev
 RUN install-app erpnext_germany
 RUN install-app erpnextfints
-RUN install-app customization
+RUN install-app customization 
 
 USER frappe
