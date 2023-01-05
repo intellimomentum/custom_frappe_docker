@@ -23,4 +23,4 @@ git clone --depth 1 --branch v1.0.0 https://github.com/intellimomentum/hrms.git 
 git clone --depth 1 --branch version-14 https://github.com/intellimomentum/erpnext_germany.git repos/erpnext_germany
 git clone --depth 1 --branch version-14 https://github.com/intellimomentum/erpnext_datev.git repos/erpnext_datev
 git clone --depth 1 --branch version-14 https://github.com/intellimomentum/erpnext_datev.git repos/erpnext_datev
-git clone --depth 1 --branch main https://intellimomentum:${PERSONAL_ACCESS_TOKEN}@github.com/intellimomentum/erpnext_customization.git repos/customization
+git clone --depth 1 --branch main https://intellimomentum:${secrets.GITHUB_TOKEN}@github.com/intellimomentum/erpnext_customization.git repos/customization
