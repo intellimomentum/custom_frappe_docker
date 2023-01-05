@@ -64,7 +64,7 @@ jobs:
         id: get-base-versions
         run: |
           echo "::set-output name=FRAPPE_VERSION::$(jq -r .frappe base_versions.json)"
-          echo "::set-output name=ERPNEXT_VERSION::$(jq -r .erpnext base_versions.json)"
+        #  echo "::set-output name=ERPNEXT_VERSION::$(jq -r .erpnext base_versions.json)"
       - name: Get Repo
         id: get-repo
         run: |
@@ -73,7 +73,7 @@ jobs:
 
       - name: downcase BRANCH
         run: |
-          echo 'print("${{github.head_ref || github.ref_name}}".upper())' | python3.9 -) >>${USEDBRANCH}
+          echo 'print("USEDBRANCH=${{github.head_ref || github.ref_name}}".upper())' | python3.9 -) >> $GITHUB_ENV
 
       - name: Push
         uses: docker/bake-action@v2.3.0
@@ -86,5 +86,5 @@ jobs:
           ERPNEXT_VERSION: ${{ steps.get-base-versions.outputs.ERPNEXT_VERSION }}
           REGISTRY_NAME: ghcr.io/${{ github.repository_owner }}/custom_frappe_docker
           VERSION: latest
-          BACKEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/worker-${{ steps.get-repo.outputs.USEDBRANCH }}
-          FRONTEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/nginx-${{ steps.get-repo.outputs.USEDBRANCH }}
+          BACKEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/worker-${{ USEDBRANCH }}
+          FRONTEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/nginx-${{ USEDBRANCH }}
