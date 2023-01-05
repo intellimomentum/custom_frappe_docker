@@ -73,7 +73,11 @@ jobs:
 
       - name: downcase BRANCH
         run: |
-          echo ('print("USEDBRANCH=" +"${{github.head_ref || github.ref_name}}".lower())' | python3.9 -) >> $GITHUB_ENV
+          echo "USEDBRANCH=${branch,,}" >>${GITHUB_ENV}
+        env:
+          branch: '${{ github.head_ref || github.ref_name }}'
+        #run: |
+        #  echo ('print("USEDBRANCH=" +"${{github.head_ref || github.ref_name}}".lower())' | python3.9 -) >> $GITHUB_ENV
 
       - name: Push
         uses: docker/bake-action@v2.3.0
