@@ -41,7 +41,8 @@ jobs:
       - name: Clone custom apps
         run: ./ci/clone-apps.sh
         env:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PAT }}
+          username: ${{ github.actor }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v2
