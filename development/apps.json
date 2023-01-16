@@ -1,7 +1,7 @@
 [
   {
     "url": "https://github.com/intellimomentum/erpnext.git",
-    "branch": "Customize"
+    "branch": "Production"
   },
   {
     "url": "https://github.com/intellimomentum/hrms.git",
