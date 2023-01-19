@@ -76,7 +76,8 @@ jobs:
           echo "USEDBRANCH=${branch,,}" >>${GITHUB_ENV}
         env:
           branch: '${{ github.head_ref || github.ref_name }}'
-
+      - name: Set current date as env variable
+        run: echo "TODAY=$(d +'%Y-%m-%dT%H:%M:%S')" >>${GITHUB_ENV}
       - name: Push
         uses: docker/bake-action@v2.3.0
         with:
@@ -86,7 +87,7 @@ jobs:
         env:
           FRAPPE_VERSION: ${{ steps.get-base-versions.outputs.FRAPPE_VERSION }}
           ERPNEXT_VERSION: ${{ steps.get-base-versions.outputs.ERPNEXT_VERSION }}
-          REGISTRY_NAME: ghcr.io/${{ github.repository_owner }}/custom_frappe_docker
-          VERSION: latest
+          REGISTRY_NAME: ghcr.io/${{ github.repository_owner }}
+          VERSION: ${{ env.TODAY }}
           BACKEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/worker-${{ env.USEDBRANCH }}
           FRONTEND_IMAGE_NAME: ${{ steps.get-repo.outputs.REPOSITORY }}/nginx-${{ env.USEDBRANCH }}
