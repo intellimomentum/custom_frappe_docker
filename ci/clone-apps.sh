@@ -18,7 +18,7 @@
 
 # Following are public repositories.
 
-git clone --depth 1 --branch Production https://github.com/intellimomentum/erpnext.git repos/erpnext
+git clone --depth 1 --branch v14.18.2-cust https://github.com/intellimomentum/erpnext.git repos/erpnext
 git clone --depth 1 --branch v1.0.0 https://github.com/intellimomentum/hrms.git repos/hrms
 git clone --depth 1 --branch version-14 https://github.com/intellimomentum/erpnext_germany.git repos/erpnext_germany
 git clone --depth 1 --branch version-14 https://github.com/intellimomentum/erpnext_datev.git repos/erpnext_datev
